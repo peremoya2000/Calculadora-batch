@@ -14,12 +14,14 @@ set opc=0
 echo Que tipo de operacion desea hacer?
 echo 1 -Operacion sencilla con dos numeros.
 echo 2 -Equacion de segundo grado.
-echo 3 -Integral avanzada.
+echo 3 -Numero aleatorio.
+echo 4 -Integral avanzada.
 set /p var=
 
 if %var%==1 goto :menu
 if %var%==2 goto :AByC
-if %var%==3 goto :integrales
+if %var%==3 goto :random
+if %var%==4 goto :integrales
 
 
 
@@ -111,11 +113,9 @@ goto :orden
 set /a x=0
 :buclelog
 set /a x=x+1
-if %x%==999 echo Logaritmo base %num1% de %num2%, no tiene solucion.
-if %x%==999 goto :orden
 set resultado=1
 for /L %%A in (1,1,%x%) do set /a resultado*=%num1%
-if NOT %num2%==%resultado% goto :buclelog
+if %resultado% LSS %num2% goto :buclelog
 echo El logaritmo base %num1% de %num2% es %x%
 echo.
 goto :orden
@@ -131,6 +131,25 @@ if %x% LSS %num2% goto :bucleraiz
 echo El resultado aproximado de raiz %num1% de %num2% es %resultado%
 echo.
 goto :orden
+
+:random
+echo Numero minimo:
+set /p min=
+echo Numero maximo:
+set /p max=
+:calcrand
+set /a res= %RANDOM% * (%max% - %min% + 1) / 32768 + %min%
+echo El numero es %res%
+
+echo 1-Repetir
+echo 2-Insertar nuevo rango
+echo 3-Hacer otra operacion
+set /p var=
+echo .
+if %var%==1 goto :calcrand
+if %var%==2 goto :random
+goto :pantallainicial
+
 
 :AByC
 echo.
