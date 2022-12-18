@@ -66,7 +66,6 @@ if %var%==9 goto :salir
 :suma
 set /a resultado=%num1%+%num2%
 echo La suma de %num1% y %num2% es: %resultado%
-if %resultado%==2  echo Oye, que pensar no es tan dificil
 
 echo.
 goto :orden
@@ -74,7 +73,6 @@ goto :orden
 :resta
 set /a resultado=%num1%-%num2%
 echo La resta entre %num1% y %num2% es: %resultado%
-if %resultado%==2  echo Oye, que pensar no es tan dificil
 
 echo.
 goto :orden
@@ -82,7 +80,7 @@ goto :orden
 :multiplicacion
 set /a resultado=%num1%*%num2%
 echo La multiplicacion entre %num1% y %num2% es: %resultado%
-if %resultado%==5 echo Como has hecho eso?
+if %resultado%==5 echo ¿Como has hecho eso?
 echo.
 goto :orden
 
